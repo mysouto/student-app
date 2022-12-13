@@ -1,15 +1,15 @@
-import React from 'react';
+import React from "react";
 
-const ClassInfo = () => {
-    return (
-    <section>
-        <h2>Class Information</h2>
-        <ul>
-            <li>Name: Team Semicolons</li>
-            <li>Number of members: 30</li>
-        </ul>
-    </section>
-    );
+const ClassInfo = (props) => {
+	return (
+		<section>
+			<h2>Class Information</h2>
+			<ul>
+				<li>Name: Lions</li>
+				<li>Number of members: {props.memberCount} </li>
+			</ul>
+		</section>
+	);
 };
 
 export default ClassInfo;

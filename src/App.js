@@ -39,7 +39,7 @@ function App() {
         <StudentList></StudentList> */}
 
 				{/* a 2nd component */}
-				<ClassInfo></ClassInfo>
+				<ClassInfo memberCount={studentData.length}></ClassInfo>
 			</main>
 		</div>
 	);
