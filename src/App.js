@@ -1,6 +1,7 @@
 import "./App.css";
 import StudentList from "./components/StudentList";
 import ClassInfo from "./components/ClassInfo";
+import Post from "./components/Post";
 
 const studentData = [
 	{
@@ -40,6 +41,9 @@ function App() {
 
 				{/* a 2nd component */}
 				<ClassInfo memberCount={studentData.length}></ClassInfo>
+
+				<Post />
+				<Post />
 			</main>
 		</div>
 	);
