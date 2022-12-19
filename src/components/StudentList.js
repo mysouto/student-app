@@ -1,20 +1,26 @@
 import React from "react";
+import PropTypes from "prop-types";
+
 import "./StudentList.css";
+
 // importing Student presentational component
 import Student from "./Student";
 
-// const StudentList = () => {
-// 	return <h2>Student List</h2>;
-// };
-
-
-const StudentList = (props) => {
+const StudentList = ({ studentData, onUpdateStudent }) => {
 	const componentClass = "student-list";
 
-	const studentComponents = props.studentData.map((student) => {
+	// StudentList receives student data in a prop named students and
+	// passes student data info into each Student component
+	const studentComponents = studentData.map((student) => {
 		return (
-			<li key={student.emailData}>
-				<Student name={student.nameData} email={student.emailData} />
+			<li key={student.id}>
+				<Student
+					id={student.id}
+					name={student.nameData}
+					email={student.emailData}
+					isPresent={student.isPresentData}
+					onUpdateStudent={onUpdateStudent}
+				></Student>
 			</li>
 		);
 	});
@@ -22,24 +28,21 @@ const StudentList = (props) => {
 	return (
 		<div>
 			<h2 className="student-list__heading">Student List</h2>
-			<ul className={componentClass}>
-				{studentComponents}
-				{/* <li>Student A</li>
-				<li>Student B</li>
-				<li>Student C</li> */}
-				{/* <li>
-					<Student name="Milena" email="ada@dev.org" />
-				</li>
-				<li>
-					<Student name="Coopi" email="ada@dev.org" />
-				</li> */}
-				{/* <li> */}
-				{/* undefined component below */}
-				{/* <Student /> */}
-				{/* </li> */}
-			</ul>
+			<ul className={componentClass}>{studentComponents}</ul>
 		</div>
 	);
+};
+
+StudentList.propTypes = {
+	students: PropTypes.arrayOf(
+		PropTypes.shape({
+			id: PropTypes.number.isRequired,
+			nameData: PropTypes.string.isRequired,
+			emailData: PropTypes.string.isRequired,
+			isPresentData: PropTypes.bool,
+		})
+	),
+	onUpdateStudent: PropTypes.func.isRequired,
 };
 
 // const StudentList = () => {
